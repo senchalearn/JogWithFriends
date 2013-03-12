@@ -59,7 +59,5 @@ Ext.define('JWF.view.Main', {
                 meta.fireEvent('tap', meta, e);
             });
         }
-
     }
-
 });

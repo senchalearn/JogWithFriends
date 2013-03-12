@@ -21,15 +21,13 @@ Ext.Loader.setConfig({
 });
 
 Ext.application({
-    viewport: {
-        autoMaximize: true
-    },
-
     models: [
-        'Run'
+        'Run',
+        'Friend'
     ],
     stores: [
-        'Runs'
+        'Runs',
+        'Friends'
     ],
     views: [
         'run.List',
@@ -52,7 +50,7 @@ Ext.application({
     ],
 
     launch: function() {
-        this.facebookAppId = '';
+        this.facebookAppId = '362146057147121';
 
         if (this.facebookAppId === '') {
             Ext.create('Ext.Component', {

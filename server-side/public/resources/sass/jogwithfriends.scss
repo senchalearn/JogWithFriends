@@ -40,8 +40,25 @@ html, body {
 .x-list .x-list-item {
     border-top: 2px solid #d3d3d3;
 }
+#friendsList .x-list-item {
+    border-top: 0;
+}
 .x-list .x-list-item .x-list-item-label {
     padding: 10px;
+}
+.x-list .x-list-item.x-item-selected .x-dock-horizontal {
+    background-image: url(../images/added.png);
+    background-repeat: no-repeat;
+    background-position: 98% 7px;
+    background-color: #fff;
+    text-shadow: 0 0 0;
+    color: #000;
+    border-top-color: #dedede;
+    font-weight: bold;
+    // border-top-color: #ccc;
+    // color: darken(#4f679d, 10);
+    // text-shadow: rgba(255,255,255,.5) 0 1px 0;
+    // // @include background-image(linear-gradient(top, #eeeeee, #ccc));
 }
 .run {
     min-height: 45px;
@@ -71,6 +88,12 @@ html, body {
     font-size: 12px;
     padding-top: 3px;
     color: #666;
+}
+.run .friends {
+    font-size: 13px;
+    color: #747474;
+    padding-left: 4px;
+    font-style: italic;
 }
 
 .fbLogin {
@@ -162,6 +185,37 @@ body {
 }
 .x-form-fieldset .x-field.x-form-fieldset-item-last {
     border-bottom: 1px solid #bebebe !important;
+}
+
+#selectedFriends {
+    color: #999;
+    padding: 5px 5px 0 5px;
+    font-size: 14px;
+}
+
+.x-button-add-friends {
+    border-top: 1px solid #999999 !important;
+    border-bottom: 1px solid #bdbdbd !important;
+    border-left: 1px solid #c5c5c5 !important;
+    border-right: 1px solid #c5c5c5 !important;
+    -webkit-box-shadow: inset 0 1px 1px #ccc !important;
+
+    background: -webkit-gradient( linear, left top, left bottom, from(#e6e6e6), to(#dadada) );
+    border-radius: 3px;
+
+    min-height: 1.5em;
+    padding: 0 !important;
+
+    .x-button-label {
+        color: #213a66;
+        padding: 0;
+        font-size: 12px;
+        text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+    }
+
+    &.x-button-pressed, &.x-button-pressing {
+        background-image: -webkit-gradient( linear, left top, left bottom, from(darken(#e6e6e6, 10%)), to(darken(#dadada, 10%)) );
+    }
 }
 
 .x-button-facebook {

@@ -15,19 +15,19 @@ var graph = require('fbgraph'),
 var config = {
 
     // Base URL of the App (must be a publically accessible URL)
-    redirect_uri:  '',
+    redirect_uri:  'http://agile-anchorage-2261.herokuapp.com',
 
     // Facebook Application ID
-    client_id:     '',
+    client_id:     '362146057147121',
 
     // Facebook Application Secret
-    client_secret: '',
+    client_secret: '4bb7b7dc7358cd42384ee49c91f00d0f',
 
     // MongoDB endpoint
-    mongoDb:       '',
+    mongoDb:       'mongodb://user:password@ds051067.mongolab.com:51067/run-with-new-friends',
 
     // Session encyption key
-    sessionSecret: ''
+    sessionSecret: 'asdhas87y234?@#$ewfdhgsadjfhbasd!@#asdasdbasyihd'
 };
 
 // Database and Model setup
@@ -199,6 +199,21 @@ app.get('/runs', checkFbSession, function(req, res) {
 });
 
 /**
+ * Get the friends of the current user
+ */
+app.get('/friends', checkFbSession, function(req, res, next) {
+
+    console.log("Finding friends for " + req.session.fb.user_id + "...");
+
+    // Fetch all the users friends
+    graph.get("/me/friends", function(err, response) {
+        var friends = response.data;
+
+        res.json(friends);
+    });
+});
+
+/**
  * Add a new Run to the database
  */
 app.post('/run', checkFbSession, function(req, res, next) {
@@ -215,6 +230,7 @@ app.post('/run', checkFbSession, function(req, res, next) {
 
         // Construct a new Run using the post data
         var run = new Run({
+            friends:   req.body.friends,
             location:  req.body.location || 'Unknown Location',
             date:      new Date,
             distance:  req.body.distance,

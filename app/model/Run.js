@@ -22,6 +22,9 @@ Ext.define('JWF.model.Run', {
                 name: 'location'
             },
             {
+                name: 'friends'
+            },
+            {
                 name: 'date',
                 type: 'date'
             },

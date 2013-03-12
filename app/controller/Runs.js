@@ -26,6 +26,12 @@ Ext.define('JWF.controller.Runs', {
             },
             "#addRunBackBtn": {
                 tap: 'hideForm'
+            },
+            '#addFriendsBtn': {
+                tap: 'addFriends'
+            },
+            '#addFriendsButton': {
+                tap: 'showFriends'
             }
         }
     },
@@ -33,7 +39,14 @@ Ext.define('JWF.controller.Runs', {
     addRun: function(button, e, options) {
         var distance = Ext.getCmp('distanceField').getValue(),
             location = Ext.getCmp('locationField').getValue(),
-            caption = JWF.userData.first_name + ' ran ' + distance + ' miles';
+            caption = JWF.userData.first_name + ' ran ' + distance + ' miles',
+            friends = [];
+
+        // Get the friends
+        var selection = Ext.getCmp('friendsList').getSelection();
+        for (var i = 0; i < selection.length; i++) {
+            friends.push(selection[i].get('name'));
+        }
 
         if (location) {
             caption += ' in ' + location;
@@ -49,7 +62,8 @@ Ext.define('JWF.controller.Runs', {
             method: 'POST',
             params: {
                 location: location,
-                distance: distance
+                distance: distance,
+                friends: friends.join(', ')
             },
             callback: this.onAddRun,
             scope: this
@@ -57,6 +71,12 @@ Ext.define('JWF.controller.Runs', {
     },
 
     showForm: function(button, e, options) {
+        var friendStore = Ext.getStore('Friends');
+
+        if (friendStore && friendStore.getCount() == 0) {
+            friendStore.load();
+        }
+
         if (!this.addRunForm) {
             this.addRunForm = Ext.create('JWF.view.Form', {
                 id: 'runForm'
@@ -68,13 +88,21 @@ Ext.define('JWF.controller.Runs', {
     hideForm: function(button, e, options) {
         Ext.Viewport.setActiveItem(Ext.getCmp('main'));
         Ext.getCmp('runForm').hide();
+        Ext.getCmp('friendsList').deselectAll();
+        Ext.getCmp('selectedFriends').hide();
+    },
+
+    showFriends: function() {
+        Ext.getCmp('addRunBackBtn').hide();
+        Ext.getCmp('addFriendsBtn').show();
+
+        Ext.getCmp('runForm').setActiveItem(Ext.getCmp('friendsList'));
     },
 
     init: function(application) {
         this.callParent();
 
         Ext.getStore('Runs').on('load', this.onRunsLoad);
-
     },
 
     onRunsLoad: function(store) {
@@ -104,6 +132,29 @@ Ext.define('JWF.controller.Runs', {
         Ext.getCmp('runForm').setMasked(false);
         this.hideForm();
         Ext.getStore('Runs').load();
-    }
+    },
 
+    addFriends: function() {
+        Ext.getCmp('addRunBackBtn').show();
+        Ext.getCmp('addFriendsBtn').hide();
+
+        // Update the selected friends
+        var form = Ext.getCmp('runForm'),
+            friendsList = Ext.getCmp('friendsList'),
+            friends = friendsList.getSelection(),
+            names = [];
+
+        for (var i = friends.length - 1; i >= 0; i--) {
+            names.push(friends[i].get('name'));
+        }
+
+        if (names.length > 0) {
+            Ext.getCmp('selectedFriends').setHtml(names.join(', '));
+            Ext.getCmp('selectedFriends').show();
+        } else {
+            Ext.getCmp('selectedFriends').hide();
+        }
+
+        form.setActiveItem(0);
+    }
 });
