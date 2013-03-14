@@ -1,5 +1,4 @@
-JogWithFriends
-================================
+# JogWithFriends
 
 A Sencha Touch 2 built with Sencha Architect that allows you to share jogging events with your facebook friends.  [Original example](http://docs.sencha.com/touch/2-0/#!/example/jog-with-friends)
 
@@ -16,12 +15,6 @@ Features:
 
 
 ## Setting up JogWithFriends
-This demo app shows off how to use Facebook with Sencha Touch. To see the app in action, visit:
-
-http://ju.mp/senchajwf
-
-This example uses the Facebook Javascript SDK on the client side, node.js for the server side and
-MongoDB for the database.
 
 In order to run this example app, you'll need to set up a Facebook application and deploy the app
 to a public server. Below we outline how to do so using free accounts from Heroku and MongoLabs.
@@ -72,18 +65,30 @@ We assume you're familiar with Git and have it installed.
        - `mongoDb`        Mongo connection URL from above
        - `sessionSecret`  A random string of characters for session encryption
 
-### Build and Deploy your app
+### Running your app locally
 
-  1. Edit `build.sh` in the run-with-friends example folder
-  2. Make sure the path to `sencha-touch.js` on the last line of build.sh is correct
-  3. Run build.sh
-  4. Change to the `server-side` directory
-  5. Run the following git commands:
+To run the app locally, you must first update your Facebook app to point to localhost.
+
+  1. Visit https://developers.facebook.com/apps and select your application.
+  2. In the 'Select how your app integrates with Facebook' section, click the 'Mobile Web' option
+     and set the domain to `http://localhost:3000`
+
+Next we need to build our app, install the required node modules, and then run the app using [node.js](http://nodejs.org/download/).
+
+  1. Run `build.sh`
+  2. Change to the `server-side` directory
+  3. Install all the required node modeles by running: `npm install`
+  4. Run the app by typing: `node app.js`
+  5. Visit your app by going to `http://localhost:3000`
+
+### Deploying your app
+
+  1. Run build.sh
+  2. Change to the `server-side` directory
+  3. Run the following git commands:
 
         $ git add .
         $ git commit -m "Initial commit"
         $ git push heroku master
 
-### Check your app
-
-Visit your live Heroku URL from your mobile device or Webkit based browser.
+  4. Visit your live Heroku URL from your mobile device or Webkit based browser.
