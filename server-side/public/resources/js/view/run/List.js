@@ -2,6 +2,7 @@ Ext.define('JWF.view.run.List', {
     extend: 'Ext.dataview.List',
 
     config: {
+        itemHeight: 75,
         emptyText: 'Add some Runs, then invite your friends!',
         store: 'Runs',
         disableSelection: true,

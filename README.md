@@ -7,6 +7,10 @@ A Sencha Touch 2 application that allows you to share jogging events with your f
 In order to run this example app, you'll need to set up a Facebook application and deploy the app
 to a public server. Below we outline how to do so using free accounts from Heroku and MongoLabs.
 
+### Add Sencha Touch 2.2
+
+Sencha Touch is not included in this repository. You must download it from the [Sencha website](http://www.sencha.com/products/touch/) and add it to the `resources/js` folder.
+
 ### Set up Heroku
 
 We assume you're familiar with Git and have it installed.
