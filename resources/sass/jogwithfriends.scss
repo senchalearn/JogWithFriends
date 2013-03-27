@@ -8,21 +8,8 @@ $list-header-color: #777;
 
 $include-default-icons: false;
 
+@import 'sencha-touch/default';
 @import 'sencha-touch/default/all';
-
-@include sencha-panel;
-@include sencha-buttons;
-@include sencha-sheet;
-@include sencha-picker;
-// @include sencha-tabs;
-@include sencha-toolbar;
-// @include sencha-carousel;
-// @include sencha-indexbar;
-@include sencha-list;
-@include sencha-layout;
-@include sencha-form;
-@include sencha-msgbox;
-@include sencha-loading-spinner;
 
 html, body {
     background-color: #dcdcdc;
