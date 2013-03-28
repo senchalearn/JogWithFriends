@@ -9,7 +9,7 @@ to a public server. Below we outline how to do so using free accounts from Herok
 
 ### Add Sencha Touch 2.2
 
-Sencha Touch is not included in this repository. You must download it from the [Sencha website](http://www.sencha.com/products/touch/) and add it to the `resources/js` folder.
+Sencha Touch is not included in this repository. You must download it from the [Sencha website](http://www.sencha.com/products/touch/) and add it to the `server-side/public/touch` folder.
 
 ### Set up Heroku
 

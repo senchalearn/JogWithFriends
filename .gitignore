@@ -2,4 +2,4 @@
 node_modules
 server-side/server-side/public/resources/js/app.js
 resources/js/touch-2.2.0/
-server-side/public/resources/js/touch-2.2.0/
+server-side/public/touch

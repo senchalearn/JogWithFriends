@@ -1,12 +1,17 @@
 Ext.define('JWF.view.Form', {
     extend: 'Ext.Panel',
 
+    requires: [
+        'Ext.TitleBar',
+        'Ext.form.FieldSet',
+        'Ext.field.Text'
+    ],
+
     config: {
         id: 'newJogContainer',
         layout: {
             type: 'card'
         },
-        scrollable: false,
         items: [
             {
                 xtype: 'titlebar',

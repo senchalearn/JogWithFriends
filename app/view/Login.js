@@ -1,5 +1,6 @@
 Ext.define('JWF.view.Login', {
     extend: 'Ext.Container',
+    requires: ['Ext.Toolbar'],
 
     config: {
         padding: 20,

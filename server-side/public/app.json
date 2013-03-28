@@ -1,0 +1,62 @@
+{
+    "name": "JWF",
+    "indexHtmlPath": "index.html",
+    "url": null,
+
+    "js": [
+        {
+            "path": "touch/sencha-touch-debug.js",
+            "x-bootstrap": true
+        },
+        {
+            "path": "resources/js/app.js",
+            "bundle": true,  /* Indicates that all class dependencies are concatenated into this file when build */
+            "update": "delta"
+        }
+    ],
+
+    "css": [
+        {
+            "path": "resources/css/jogwithfriends.css",
+            "update": "delta"
+        }
+    ],
+
+    "appCache": {
+        "cache": [
+            "index.html"
+        ],
+        "network": [
+            "*"
+        ],
+        "fallback": []
+    },
+
+    /**
+     * Extra resources to be copied along when build
+     */
+    "resources": [
+        "resources/images",
+        "resources/icons",
+        "resources/startup"
+    ],
+
+    /**
+     * File / directory name matchers to ignore when copying to the builds, must be valid regular expressions
+     */
+    "ignore": [
+        "\.svn$"
+    ],
+
+    /**
+     * Directory path to store all previous production builds. Note that the content generated inside this directory
+     * must be kept intact for proper generation of deltas between updates
+     */
+    "archivePath": "archive",
+
+    /**
+     * Uniquely generated id for this application, used as prefix for localStorage keys.
+     * Normally you should never change this value.
+     */
+    "id": "f552f1a3-510d-4571-abaa-5371b500eee2"
+}
