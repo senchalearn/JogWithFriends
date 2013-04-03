@@ -4,6 +4,7 @@ Ext.define('JWF.view.Login', {
 
     config: {
         padding: 20,
+        scrollable: true,
         layout: {
             type: 'fit'
         },
