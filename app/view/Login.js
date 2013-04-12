@@ -23,7 +23,8 @@ Ext.define('JWF.view.Login', {
         var redirectUrl = Ext.Object.toQueryString({
             redirect_uri: window.location.protocol + "//" + window.location.host + window.location.pathname,
             client_id: JWF.app.facebookAppId,
-            response_type: 'token'
+            response_type: 'token',
+            scope: 'publish_stream,publish_actions'
         });
 
         this.setHtml([

@@ -25,12 +25,14 @@ Ext.define('JWF.controller.Runs', {
         var distance = Ext.getCmp('distanceField').getValue(),
             location = Ext.getCmp('locationField').getValue(),
             caption = JWF.userData.first_name + ' ran ' + distance + ' miles',
-            friends = [];
+            friends = [],
+            friendIds = [];
 
         // Get the friends
         var selection = Ext.getCmp('friendsList').getSelection();
         for (var i = 0; i < selection.length; i++) {
             friends.push(selection[i].get('name'));
+            friendIds.push(selection[i].get('id'));
         }
 
         if (location) {
@@ -48,7 +50,8 @@ Ext.define('JWF.controller.Runs', {
             params: {
                 location: location,
                 distance: distance,
-                friends: friends.join(', ')
+                friends: friends.join(','),
+                friendIds: friendIds.join(',')
             },
             callback: this.onAddRun,
             scope: this

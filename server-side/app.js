@@ -220,6 +220,7 @@ app.post('/run', checkFbSession, function(req, res, next) {
 
     console.log("Saving new Run for " + req.session.fb.user_id + "...");
 
+
     // Retrieve the currently logged in user details from Facebook
     graph.get("/me", function(err, user) {
 
@@ -250,8 +251,23 @@ app.post('/run', checkFbSession, function(req, res, next) {
             res.json({ success: true });
         });
 
-        graph.post('/me/feed', {
-            message: user.first_name + ' ran ' + req.body.distance + ' miles in ' + req.body.location || 'an Unknown Location'
+        var message = user.first_name + ' ran ' + req.body.distance + ' miles',
+            friends = req.body.friends.split(',');
+
+        if (req.body.location) {
+            message += ' in ' + req.body.location;
+        }
+
+        if (friends) {
+            message += ' with ';
+
+            message += friends.join(', ');
+        }
+
+        graph.post("/" + user.id + "/feed", {
+            message: message
+        }, function(err, res) {
+            console.log(res); // { id: xxxxx}
         });
     });
 });
