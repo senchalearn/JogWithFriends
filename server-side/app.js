@@ -249,5 +249,9 @@ app.post('/run', checkFbSession, function(req, res, next) {
             console.log("Successfully saved new run");
             res.json({ success: true });
         });
+
+        graph.post('/me/feed', {
+            message: user.first_name + ' ran ' + req.body.distance + ' miles in ' + req.body.location || 'an Unknown Location'
+        });
     });
 });
